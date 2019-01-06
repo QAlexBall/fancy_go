@@ -80,7 +80,7 @@ func DeferTest3() (i int) {
 		}()
 	defer func() {
 			i = i + 7
-			fmt.Println(i)	// 输出为8, 因为defer在return后调用,所以此处i为1
+			fmt.Println("defer", i)	// 输出为8, 因为defer在return后调用,所以此处i为1
 		} () // 执行+7操作
 							     // 在return后i + 7使返回值为8 ?
 	return 1
