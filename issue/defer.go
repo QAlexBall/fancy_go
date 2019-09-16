@@ -118,8 +118,8 @@ func main() {
 	defer fmt.Println("\ndefer func1 out: ", func1("world"))	// 先进后出
 	fmt.Println("hello, world!")
 	//CopyFile("/home/alex/Desktop/b.txt", "/home/alex/Desktop/a.txt")
-	CopyFileWithDefer("/home/alex/WorkPlace/go/issue/copy.txt",
-				      "/home/alex/WorkPlace/go/issue/defer.go")
+	CopyFileWithDefer("/Users/chriszhu/WorkPlace/go/issue/copy.txt",
+				      "/Users/chriszhu/WorkPlace/go/issue/defer.go")
 	DeferTest1()
 	DeferTest2()
 	fmt.Println(DeferTest3())

@@ -1,8 +1,8 @@
 package main
 
 import (
-	_ "github.com/goinaction/code/chapter2/sample/matchers"
-	"github.com/goinaction/code/chapter2/sample/search"
+	_ "./matchers"
+	"./search"
 	"log"
 	"os"
 )
@@ -16,3 +16,4 @@ func main() {
 	// 使用特定的项做搜索
 	search.Run("president")
 }
+

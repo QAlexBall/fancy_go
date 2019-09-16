@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-const dataFile = "data/data.json"
+const dataFile = "/Users/chriszhu/WorkPlace/go/GoInAction/chapter02/sample/data/data.json"
 
 // Feed contains information we need to process a feed.
 type Feed struct {
