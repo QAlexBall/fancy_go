@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
 )
 
 type Tree struct {
@@ -47,37 +48,39 @@ func (t *Tree) String() string {
 }
 
 
-
-func Walk(t *Tree, ch chan int) {
+func Walk(t *Tree, ch chan int, treeName string) {
 	if t == nil {
 		return
 	}
-	if t.Left != nil {
-		Walk(t.Left, ch)
-	}
 	ch <- t.Value
-	fmt.Println(t.Value)
-	if t.Right !=nil {
-		Walk(t.Right, ch)
+	if t.Left != nil {
+		Walk(t.Left, ch, treeName)
 	}
-	ch <- 0
+	fmt.Println(treeName + " " + strconv.Itoa(t.Value))
+	if t.Right !=nil {
+		Walk(t.Right, ch, treeName)
+	}
 }
 
 func Same(t1, t2 *Tree) bool {
 	same := true
 	ch1 := make(chan int)
 	ch2 := make(chan int)
-	go Walk(t1, ch1)
-	go Walk(t2, ch2)
+	go func() {
+		Walk(t1, ch1, "t1")
+		close(ch1)
+	}()
+	go func() {
+		Walk(t2, ch2, "t2")
+		close(ch2)
+	}()
 
 
 	for i := range ch1 {
 		j := <-ch2
-		if i == 0 && j == 0 {
-			break
-		}
-		if (i ==0 && j != 0) || (i != 0 && j == 0) || (i != j) {
+		if i != j {
 			same = false
+			fmt.Println(i, j)
 			break
 		}
 	}
@@ -85,25 +88,25 @@ func Same(t1, t2 *Tree) bool {
 }
 
 func main() {
-	t1 := New(2)
-	t2 := New(2)
+	t1 := New(6)
+	t2 := New(6)
 	fmt.Println(t1.String())
 	fmt.Println(t2.String())
 	same := Same(t1, t2)
 	fmt.Println(same)
 
-	ch := make(chan int)
-	go Walk(t1, ch)
-	go Walk(t2, ch)
-	for i := range ch {
-		count := 0
-		if i == 0 {
-			count++
-			if count == 1 {
-				break
-			}
-		}
-
-		fmt.Println("at for loop: ", i)
-	}
+	//ch := make(chan int)
+	//go Walk(t1, ch)
+	//go Walk(t2, ch)
+	//for i := range ch {
+	//	count := 0
+	//	if i == 0 {
+	//		count++
+	//		if count == 1 {
+	//			break
+	//		}
+	//	}
+	//
+	//	fmt.Println("at for loop: ", i)
+	//}
 }
