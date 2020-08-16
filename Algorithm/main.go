@@ -13,7 +13,8 @@ func main() {
 	left_left := left.AddLeftNode(&Base.BinaryTreeNode{Left: nil, Val: 10, Right: nil})
 	left.AddRightNode(&Base.BinaryTreeNode{Left: nil, Val: 6, Right: nil})
 	left_left.AddRightNode(&Base.BinaryTreeNode{Left: nil, Val: 5, Right: nil})
-	BinaryTree.PreorderTraversal(&root)
-	valList := BinaryTree.PreorderTraversal2(&root)
+	// BinaryTree.PreorderTraversal(&root)
+	// valList := BinaryTree.PostorderTraversal(&root)
+	valList := BinaryTree.LevelOrder(&root)
 	fmt.Println(valList)
 }
