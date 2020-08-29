@@ -13,7 +13,7 @@ require (
 	github.com/mattn/go-colorable v0.1.6 // indirect
 	github.com/onsi/ginkgo v1.12.2 // indirect
 	github.com/pelletier/go-toml v1.8.0 // indirect
-	golang.org/x/sys v0.0.0-20200523222454-059865788121 // indirect
+	golang.org/x/sys v0.0.0-20200620081246-981b61492c35 // indirect
 	mellium.im/sasl v0.2.1 // indirect
 	rsc.io/quote v1.5.2
 	rsc.io/quote/v3 v3.1.0

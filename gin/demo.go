@@ -24,9 +24,14 @@ func main() {
 	})
 
 	r.GET("/list_users", func(c *gin.Context) {
+		var users []models.User
+		var err = db.Model(&users).Select()
+		if err != nil {
+			panic(err)
+		}
 		c.JSON(200, gin.H{
-			"message": "users_list",
+			"message": users,
 		})
 	})
-	r.Run()
+	r.Run(":8081")
 }
