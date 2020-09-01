@@ -66,13 +66,6 @@ func ModifyDB(sql string, args ...interface{}) (int64, error) {
 
 // CreateTableWithUser =>
 func CreateTableWithUser() {
-	// sql := `CREATE TABLE IF NOT EXISTS users
-	// id INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-	// username VARCHAR(64),
-	// password VARCHAR(64),
-	// status INT(4),
-	// createtime INT(10)
-	// ;`
 	sql := `create table if not exists beego_users (
 			id serial primary key not null,
 			username varchar(64) not null,
